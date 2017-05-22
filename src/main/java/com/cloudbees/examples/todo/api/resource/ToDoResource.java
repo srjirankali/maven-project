@@ -35,7 +35,14 @@ public class ToDoResource {
 		List<ToDo> todos = service.find();
 		return todos;
 	}
-
+	
+       @Test
+        public void testGetToday_FAILED() throws InterruptedException {
+ 	Thread.sleep(100);
+ 	String actual = DateUtil.getToday();
+ 	assertEquals("", actual);
+        }
+	
 	@GET
 	@Path("{id}")
 	public ToDo getOne(@PathParam("id") long id) {
